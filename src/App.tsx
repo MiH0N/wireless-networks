@@ -1,4 +1,4 @@
-import { DataBits } from './components/DataBit';
+import { DataBits } from "components/DataBit";
 
 function App() {
 
