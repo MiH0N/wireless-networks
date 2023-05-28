@@ -8,9 +8,9 @@ export const ConnectLoader: FC<IConnectLoaderProps> = ({ count = 4 }) => {
     <div className='flex  space-x-3 m-auto my-0 '>
       {[...Array(count)].map((item, index) => (
         <div
-          className='ball delay-1000'
+          className='ball w-2 h-2'
           style={{
-            animationDelay: `${index * 0.5}s`,
+            animationDelay: `${index * 0.1}s`,
           }}
         />
       ))}
