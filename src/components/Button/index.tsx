@@ -11,7 +11,7 @@ interface IButtonProps
 }
 
 const buttonStyle = (variant: IButtonProps['variant']) => {
-  const baseClassName = 'p-4 rounded-sm transition-all duration-300';
+  const baseClassName = 'p-4 rounded-md transition-all duration-300';
   let classname = baseClassName;
   const primaryClassNames = 'text-white bg-blue-600';
   const errorClassNames = 'bg-red-600 text-white rounded hover:shadow-lg';
