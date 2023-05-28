@@ -58,3 +58,7 @@ body {
     background: rgba(140, 214, 165, 0.025);
   }
 }
+
+.rotateY-180 {
+  transform: rotateY(180deg);
+}
