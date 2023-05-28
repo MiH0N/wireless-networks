@@ -4,9 +4,10 @@ import { BitItem } from './BitItem';
 import { bitConvertor } from '../../utils/bitConvertor';
 interface IDataBitsProps {
   data: string;
+  disabled?: boolean;
 }
 
-export const DataBits: FC<IDataBitsProps> = ({ data: initialData }) => {
+export const DataBits: FC<IDataBitsProps> = ({ data: initialData, disabled }) => {
   const [data, setData] = useState<string>(initialData);
   const handleChangeBit = (newBit: number, index: number) => {
     const _newData = data.split('');
@@ -26,6 +27,7 @@ export const DataBits: FC<IDataBitsProps> = ({ data: initialData }) => {
             index === 0 && 'border-l rounded-l-md',
             index === data.length - 1 && 'rounded-r-md'
           )}
+          isDisabled={disabled}
         />
       ))}
     </div>

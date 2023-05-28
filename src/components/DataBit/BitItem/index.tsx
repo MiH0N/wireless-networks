@@ -6,6 +6,7 @@ interface IBitItemProps {
   onClick: (bit: number) => void;
   className: string;
   status?: 'default' | 'error' | 'selected';
+  isDisabled?: boolean;
 }
 
 const StatusStyle = {
@@ -14,7 +15,13 @@ const StatusStyle = {
   selected: 'bg-blue-400 text-white hover:bg-blue-300',
 };
 
-export const BitItem: FC<IBitItemProps> = ({ bit, onClick, className, status = 'default' }) => {
+export const BitItem: FC<IBitItemProps> = ({
+  bit,
+  onClick,
+  className,
+  status = 'default',
+  isDisabled = false,
+}) => {
   const style = StatusStyle[status];
   return (
     <button
@@ -23,7 +30,11 @@ export const BitItem: FC<IBitItemProps> = ({ bit, onClick, className, status = '
         'border-r border-y border-slate-700 p-4 m-0 min-w-[4rem] transition-all duration-400',
         className
       )}
-      onClick={() => onClick((bit + 1) % 2)}>
+      onClick={() => {
+        if (!isDisabled) {
+          onClick((bit + 1) % 2);
+        }
+      }}>
       {bit}
     </button>
   );
