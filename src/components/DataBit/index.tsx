@@ -5,18 +5,37 @@ import { bitConvertor } from '../../utils/bitConvertor';
 interface IDataBitsProps {
   data: string;
   disabled?: boolean;
-  onChangeBit : (newBit: number, index: number) => void
+  onChangeBit?: (newBit: number, index: number) => void;
+  selected?: number | number[];
+  errors?: number | number[];
 }
 
-export const DataBits: FC<IDataBitsProps> = ({ data, disabled , onChangeBit }) => {
+export const DataBits: FC<IDataBitsProps> = ({ data, disabled, onChangeBit, selected, errors }) => {
+  const getStatus = (key: number) => {
+    if (typeof selected === 'number' && selected === key) {
+      return 'selected';
+    }
+    if (typeof selected === 'object' && selected?.includes(key)) {
+      return 'selected';
+    }
+    if (typeof errors === 'number' && errors === key) {
+      return 'error';
+    }
+    if (typeof errors === 'object' && errors?.includes(key)) {
+      return 'error';
+    }
+    return 'default';
+  };
   return (
     <div className='flex justify-center'>
       {data.split('').map((item, index) => (
         <BitItem
-          // status={index == 3 ? 'error' : index === 5 ? 'selected' : 'default'}
+          status={getStatus(index + 1)}
           key={index}
           bit={bitConvertor(item)}
-          onClick={_bit => onChangeBit(_bit, index)}
+          onClick={_bit => {
+            if (onChangeBit !== undefined) onChangeBit(_bit, index);
+          }}
           className={classNames(
             index === 0 && 'border-l rounded-l-md',
             index === data.length - 1 && 'rounded-r-md'
