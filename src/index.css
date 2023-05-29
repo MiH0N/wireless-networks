@@ -40,6 +40,13 @@ body {
   display: block;
   border-radius: 50%;
   bottom: 10px;
+}
+
+.ball-static {
+  background: rgb(140, 214, 165)
+}
+
+.ball-animation {
   -webki-animation: bounce 3.5s infinite;
   -moz-animation: bounce 3.5s infinite;
   -ms-animation: bounce 3.5s infinite;
