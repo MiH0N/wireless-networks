@@ -12,6 +12,7 @@ import { MyLottie } from '@/components/Lottie/MyLottie';
 import serverLottie from '@/constants/lotties/server.json';
 import radarLottie from '@/constants/lotties/Radar.json';
 import classNames from 'classnames';
+import { ParityInfo } from '@/components/ParityInfo';
 
 const initialData = {
   sender: '101011',
@@ -59,7 +60,7 @@ function ParityCheck() {
           showError={paritySenderData.data !== parityReciverData.data}
           className={classNames(
             'absolute',
-            showDataReciver ? 'duration-[1000ms] right-0' : 'duration-[200ms] opacity-0'
+            showDataReciver ? 'duration-[800ms] right-0' : 'duration-[200ms] opacity-0'
           )}
         />
       </div>
@@ -104,6 +105,14 @@ function ParityCheck() {
           Reset
         </Button>
       </div>
+      {showDataReciver && showItems && (
+        <ParityInfo
+          senderData={senderData}
+          reciverData={reciverData}
+          parityReciverData={parityReciverData}
+          paritySenderData={paritySenderData}
+        />
+      )}
     </div>
   );
 }
