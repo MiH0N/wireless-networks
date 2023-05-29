@@ -69,3 +69,7 @@ body {
 .rotateY-180 {
   transform: rotateY(180deg);
 }
+
+button path {
+  stroke: white;
+}

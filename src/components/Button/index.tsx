@@ -6,18 +6,26 @@ interface IButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  variant: 'primary' | 'error';
+  variant: 'primary' | 'error' | 'warning' | 'dark';
   iconComponent?: JSX.Element;
 }
 
 const buttonStyle = (variant: IButtonProps['variant']) => {
-  const baseClassName = 'p-4 rounded-md transition-all duration-300';
+  const baseClassName = 'p-3 rounded-md transition-all duration-300';
   let classname = baseClassName;
-  const primaryClassNames = 'text-white bg-blue-600';
-  const errorClassNames = 'bg-red-600 text-white rounded hover:shadow-lg';
+  const primaryClassNames = 'text-white bg-blue-400';
+  const warningClassNames = 'bg-yellow-400 text-white rounded hover:shadow-lg';
+  const darkClassNames = 'bg-[#204E58] text-white rounded hover:shadow-lg';
+  const errorClassNames = 'bg-red-400 text-white rounded hover:shadow-lg';
   switch (variant) {
     case 'primary':
       classname += ' ' + primaryClassNames;
+      break;
+    case 'warning':
+      classname += ' ' + warningClassNames;
+      break;
+    case 'dark':
+      classname += ' ' + darkClassNames;
       break;
     case 'error':
       classname += ' ' + errorClassNames;
@@ -28,11 +36,22 @@ const buttonStyle = (variant: IButtonProps['variant']) => {
   return classname;
 };
 
-export const Button: FC<IButtonProps> = ({ variant = 'primary', children, iconComponent, ...props }) => {
+export const Button: FC<IButtonProps> = ({
+  variant = 'primary',
+  children,
+  iconComponent,
+  ...props
+}) => {
   return (
-    <button className={classNames(buttonStyle(variant), !!iconComponent && 'flex items-center' , props.className)} {...props}>
+    <button
+      className={classNames(
+        buttonStyle(variant),
+        !!iconComponent && 'flex items-center',
+        props.className
+      )}
+      {...props}>
       {children}
-      {iconComponent && <span className='ms-2'>{iconComponent}</span>}
+      {iconComponent && <span className={classNames(!!children && 'ms-2')}>{iconComponent}</span>}
     </button>
   );
 };

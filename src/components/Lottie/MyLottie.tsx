@@ -7,6 +7,7 @@ interface IMyLottieProps {
   className?: string;
   defaultOptions?: Options;
   animationData: any;
+  show ?: boolean;
 }
 
 export const MyLottie: FC<IMyLottieProps> = ({
@@ -15,10 +16,11 @@ export const MyLottie: FC<IMyLottieProps> = ({
   className,
   animationData,
   defaultOptions: options = {},
+  show = true,
 }) => {
   const defaultOptions: Options = {
-    loop: true,
-    autoplay: true,
+    loop: show,
+    autoplay: show,
     animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
@@ -27,13 +29,13 @@ export const MyLottie: FC<IMyLottieProps> = ({
   };
   return (
     <div className={classnames(className ? className : '')}>
-      <Lottie
+      {show && <Lottie
         options={defaultOptions}
         height={height ? height : '100%'}
         width={width ? width : '100%'}
         isClickToPauseDisabled={true}
         style={{ cursor: 'default' }}
-      />
+      />}
     </div>
   );
 };
