@@ -1,4 +1,4 @@
-import { ConnectLoader } from '@/components/ConnectionLoader/ConnectLoader';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { useParityCheck } from '@/utils/hooks/useParityCheck';
 import { Button } from '@/components/Button';
@@ -14,6 +14,7 @@ import radarLottie from '@/constants/lotties/Radar.json';
 import classNames from 'classnames';
 import { ParityInfo } from '@/components/ParityInfo';
 import { ConnectionLoader } from '@/components/ConnectionLoader';
+import { ToastContainer } from 'react-toastify';
 
 const initialData = {
   sender: '101011',
@@ -34,6 +35,7 @@ function ParityCheck() {
     showDataReciver,
     handleShowItem,
     hasError,
+    setError,
   } = useParityCheck(initialData);
 
   return (
@@ -98,7 +100,7 @@ function ParityCheck() {
           variant='dark'
           title='Set Error'
           iconComponent={<GrStatusWarning />}
-          onClick={() => {}}>
+          onClick={setError}>
           Set Error
         </Button>
         <Button
@@ -117,6 +119,7 @@ function ParityCheck() {
           paritySenderData={paritySenderData}
         />
       )}
+      <ToastContainer />
     </div>
   );
 }

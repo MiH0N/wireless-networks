@@ -1,6 +1,7 @@
 import { useDataBit } from 'utils/hooks/useDataBit';
 import { counterTrue } from '@/utils/counterTrue';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 type UseParityCheckProps = {
   sender: string;
   reciver: string;
@@ -54,6 +55,24 @@ export const useParityCheck = (initialData: UseParityCheckProps) => {
     }
   };
 
+  const setError = () => {
+    if (!showItems) return;
+    if (!(hasError || !parityCheck)) {
+      reciverData.handleChangeBit((Number(reciverData.data[0]) + 1) % 2, 0);
+    } else {
+      toast.info('There is an error in the received data', {
+        position: 'bottom-left',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    }
+  };
+
   return {
     senderData,
     paritySenderData,
@@ -67,5 +86,6 @@ export const useParityCheck = (initialData: UseParityCheckProps) => {
     showDataReciver,
     handleShowItem,
     hasError: hasError || !parityCheck,
+    setError,
   };
 };

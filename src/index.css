@@ -52,15 +52,15 @@ body {
 }
 
 .ball-static {
-  background: rgb(140, 214, 165)
+  background: rgb(140, 214, 165);
 }
 
 .ball-error-active {
-  background: rgba(246, 29, 29, 0.875)
+  background: rgba(246, 29, 29, 0.875);
 }
 
-.ball-error { 
-  background: rgba(246, 29, 29, 0.39)
+.ball-error {
+  background: rgba(246, 29, 29, 0.39);
 }
 
 .ball-animation {
@@ -92,13 +92,13 @@ body {
 }
 @keyframes bounceError {
   0% {
-    background: rgba(246, 29, 29, 0.39)
+    background: rgba(246, 29, 29, 0.39);
   }
   50% {
-    background: rgba(246, 29, 29, 0.875)
+    background: rgba(246, 29, 29, 0.875);
   }
   100% {
-    background: rgba(246, 29, 29, 0.39)
+    background: rgba(246, 29, 29, 0.39);
   }
 }
 
@@ -108,4 +108,8 @@ body {
 
 button path {
   stroke: white;
+}
+
+.Toastify__toast-container {
+  text-align: left;
 }
