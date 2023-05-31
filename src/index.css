@@ -113,3 +113,26 @@ button path {
 .Toastify__toast-container {
   text-align: left;
 }
+
+nav {
+  background: #204E58;
+}
+nav ul {
+  display: flex;
+  padding: 0.25rem 1rem;
+}
+
+nav li {
+  display: block;
+  margin: 1rem;
+  transition: all;
+  animation-duration: 300ms;
+}
+
+nav li a {
+  color: white;
+}
+
+nav li :hover {
+  text-decoration: underline;
+}
