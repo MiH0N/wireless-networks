@@ -19,16 +19,15 @@ export const ParityInfo: FC<IParityInfoProps> = ({
 }) => {
   const hasError = senderData.data === reciverData.data;
   const parityCheck = parityReciverData.data === paritySenderData.data;
-
   return (
     <div className='text-left space-y-4 my-4'>
       <div className='flex items-center space-x-3'>
         <h4>Is the real data different from the received data?</h4>
-        <span className='text-[30px]'>{hasError ? <>✅</> : <>✖️</>}</span>
+        <span className='text-[30px]'>{!hasError ? <>✅</> : <>✖️</>}</span>
       </div>
       <div className='flex items-center space-x-3'>
         <h4>has error in parity check ? </h4>
-        <span className='text-[30px]'>{parityCheck ? <>✅</> : <>✖️</>}</span>
+        <span className='text-[30px]'>{!parityCheck ? <>✅</> : <>✖️</>}</span>
       </div>
       {hasError !== parityCheck && (
         <div className='p-4 rounded-md text-red-600 border-red-400 border w-fit m-auto'>

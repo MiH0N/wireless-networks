@@ -1,4 +1,4 @@
-import { ConnectLoader } from 'components/ConnectLoader';
+import { ConnectLoader } from '@/components/ConnectionLoader/ConnectLoader';
 
 import { useParityCheck } from '@/utils/hooks/useParityCheck';
 import { Button } from '@/components/Button';
@@ -13,6 +13,7 @@ import serverLottie from '@/constants/lotties/server.json';
 import radarLottie from '@/constants/lotties/Radar.json';
 import classNames from 'classnames';
 import { ParityInfo } from '@/components/ParityInfo';
+import { ConnectionLoader } from '@/components/ConnectionLoader';
 
 const initialData = {
   sender: '101011',
@@ -32,6 +33,7 @@ function ParityCheck() {
     showConnectLoader,
     showDataReciver,
     handleShowItem,
+    hasError,
   } = useParityCheck(initialData);
 
   return (
@@ -71,13 +73,15 @@ function ParityCheck() {
           show={showItems}
           className='rotateY-180 min-h-[12rem]'
         />
-        <ConnectLoader
+        <ConnectionLoader
           count={15}
           className={classNames(
-            'mb-6 duration-300 transition-all',
-            showConnectLoader ? '' : 'opacity-0'
+            'duration-300 transition-all',
+            showConnectLoader ? '' : 'opacity-0',
+            !hasError && 'mb-6'
           )}
           isStatic={showConnectLoader && showDataReciver}
+          type={hasError ? 'disconnect' : 'connect'}
         />
         <MyLottie
           width={160}

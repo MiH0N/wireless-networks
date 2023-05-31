@@ -16,6 +16,9 @@ export const useParityCheck = (initialData: UseParityCheckProps) => {
   const reciverData = useDataBit(initialData.reciver);
   const parityReciverData = useDataBit((counterTrue(reciverData.data) % 2).toString());
 
+  const hasError = senderData.data !== reciverData.data;
+  const parityCheck = parityReciverData.data === paritySenderData.data;
+
   useEffect(() => {
     paritySenderData.handleChangeBit(counterTrue(senderData.data) % 2, 0);
   }, [senderData]);
@@ -63,5 +66,6 @@ export const useParityCheck = (initialData: UseParityCheckProps) => {
     showConnectLoader,
     showDataReciver,
     handleShowItem,
+    hasError: hasError || !parityCheck,
   };
 };

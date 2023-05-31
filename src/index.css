@@ -55,12 +55,28 @@ body {
   background: rgb(140, 214, 165)
 }
 
+.ball-error-active {
+  background: rgba(246, 29, 29, 0.875)
+}
+
+.ball-error { 
+  background: rgba(246, 29, 29, 0.39)
+}
+
 .ball-animation {
   -webki-animation: bounce 3.5s infinite;
   -moz-animation: bounce 3.5s infinite;
   -ms-animation: bounce 3.5s infinite;
   -o-animation: bounce 3.5s infinite;
   animation: bounce 3.5s infinite;
+}
+
+.ball-error-animation {
+  -webki-animation: bounceError 3.5s infinite;
+  -moz-animation: bounceError 3.5s infinite;
+  -ms-animation: bounceError 3.5s infinite;
+  -o-animation: bounceError 3.5s infinite;
+  animation: bounceError 3.5s infinite;
 }
 
 @keyframes bounce {
@@ -72,6 +88,17 @@ body {
   }
   100% {
     background: rgba(140, 214, 165, 0.025);
+  }
+}
+@keyframes bounceError {
+  0% {
+    background: rgba(246, 29, 29, 0.39)
+  }
+  50% {
+    background: rgba(246, 29, 29, 0.875)
+  }
+  100% {
+    background: rgba(246, 29, 29, 0.39)
   }
 }
 
