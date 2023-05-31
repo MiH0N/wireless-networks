@@ -1,10 +1,8 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import classNames from 'classnames';
 import { FC } from 'react';
-interface IConnectLoaderProps {
-  count?: number;
-  className?: string;
-  isStatic?: boolean;
-}
+import { IConnectionLoaderProps } from '..';
+interface IConnectLoaderProps extends Omit<IConnectionLoaderProps, 'type'> {}
 
 export const ConnectLoader: FC<IConnectLoaderProps> = ({ count = 4, className, isStatic }) => {
   return (
