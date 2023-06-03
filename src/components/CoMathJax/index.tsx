@@ -26,7 +26,7 @@ export const CoMathJax: FC<ICoMathJaxProps> = ({ data }) => {
           );
         }
       });
-    return result;
+    return result.reverse();
   };
   return (
     <div className='inline-flex items-center space-x-3'>
