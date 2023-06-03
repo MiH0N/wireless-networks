@@ -8,6 +8,7 @@ interface IButtonProps
   > {
   variant: 'primary' | 'error' | 'warning' | 'dark';
   iconComponent?: JSX.Element;
+  className ?: string
 }
 
 const buttonStyle = (variant: IButtonProps['variant']) => {
@@ -39,6 +40,7 @@ const buttonStyle = (variant: IButtonProps['variant']) => {
 export const Button: FC<IButtonProps> = ({
   variant = 'primary',
   children,
+  className = '',
   iconComponent,
   ...props
 }) => {
@@ -47,7 +49,7 @@ export const Button: FC<IButtonProps> = ({
       className={classNames(
         buttonStyle(variant),
         !!iconComponent && 'flex items-center',
-        props.className
+        className
       )}
       {...props}>
       {children}
