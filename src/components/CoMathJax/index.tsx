@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { JSX } from 'react/jsx-runtime';
 interface ICoMathJaxProps {
   data: string;
@@ -13,7 +13,7 @@ export const CoMathJax: FC<ICoMathJaxProps> = ({ data }) => {
       .map((item, index) => {
         if (item === '1' && index !== 0) {
           result.push(
-            <>
+            <React.Fragment key={index}>
               <p
                 className='inline-block relative text-[30px]'
                 style={{
@@ -22,7 +22,7 @@ export const CoMathJax: FC<ICoMathJaxProps> = ({ data }) => {
                 x <span className='absolute text-base bottom-3'>{index}</span>
               </p>
               <p>+</p>
-            </>
+            </React.Fragment>
           );
         }
       });
