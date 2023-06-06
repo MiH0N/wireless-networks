@@ -10,6 +10,8 @@ export const useCRC = ({ generator, dataword }: UseCRCProps) => {
   const reciverData = useDataBit('0'.repeat(remainderData.data.length + datawordData.data.length));
 
   const [showItems, showItem] = useState(false);
+  const [showConnectLoader, setShowConnectLoader] = useState(false);
+  const [showDataReciver, setShowDataReciver] = useState(false);
 
   const handleKeyGenerator = (newBit: number, index: number) => {
     if (index !== generatorData.data.length - 1) {
@@ -25,6 +27,13 @@ export const useCRC = ({ generator, dataword }: UseCRCProps) => {
     }
   }, [generatorData.data, datawordData.data]);
 
+  useEffect(() => {
+    if (showItems) {
+      setShowConnectLoader(true);
+      setTimeout(() => setShowDataReciver(true), 3000);
+    }
+  }, [showItems]);
+
   const sendData = () => {
     showItem(true);
   };
@@ -34,8 +43,10 @@ export const useCRC = ({ generator, dataword }: UseCRCProps) => {
     datawordData,
     remainderData,
     reciverData,
-	showItems,
-	handleKeyGenerator,
-	sendData,
+    showItems,
+	showConnectLoader,
+	showDataReciver,
+    handleKeyGenerator,
+    sendData,
   };
 };
