@@ -28,11 +28,13 @@ export const CRCPage: FC<ICRCPageProps> = props => {
     datawordData,
     remainderData,
     reciverData,
+    remainderReciverData,
     showItems,
     showConnectLoader,
     showDataReciver,
     handleKeyGenerator,
     sendData,
+    hasError,
   } = useCRC(crcInitailParam);
 
   const reciverDataRef = useRef(null);
@@ -74,7 +76,7 @@ export const CRCPage: FC<ICRCPageProps> = props => {
         </div>
         <div
           className={classNames(
-            'flex flex-col justify-center items-center',
+            'flex flex-col justify-center items-center mt-4',
             !showItems && 'opacity-0 h-0'
           )}>
           <MyLottie
@@ -89,10 +91,9 @@ export const CRCPage: FC<ICRCPageProps> = props => {
             className={classNames(
               'duration-300 transition-all',
               showConnectLoader ? '' : 'opacity-0'
-              // !hasError && 'mb-6'
             )}
             isStatic={showConnectLoader && showDataReciver}
-            type={'connect'}
+            type={hasError ? 'disconnect' : 'connect'}
           />
           <MyLottie
             width={130}
@@ -104,11 +105,23 @@ export const CRCPage: FC<ICRCPageProps> = props => {
         <div
           ref={reciverDataRef}
           className={classNames(
-            'text-center space-y-5 transition-all duration-700',
+            'text-center transition-all duration-700 flex justify-center space-x-5 items-center mb-8',
             showDataReciver && showItems ? '' : 'opacity-0'
           )}>
-          <h4 className='mt-4 mb-8'>Receiver Side</h4>
-          <DataBits data={reciverData.data} onChangeBit={reciverData.handleChangeBit} />
+          <div className='mb-4'>
+            <p className='mb-4'>Data Receiver Side </p>
+            <DataBits data={reciverData.data} onChangeBit={reciverData.handleChangeBit} />
+          </div>
+          <div className='self-end mb-8'>+</div>
+          <div className='mb-4'>
+            <p className='mb-4'>Remainder</p>
+            <DataBits
+              data={remainderReciverData.data}
+              disabled
+              onChangeBit={remainderReciverData.handleChangeBit}
+              isAllError={!!hasError}
+            />
+          </div>
         </div>
         <div className='flex-col space-y-2 justify-center absolute top-1/2'>
           <Button

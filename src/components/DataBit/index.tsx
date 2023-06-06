@@ -8,9 +8,17 @@ interface IDataBitsProps {
   onChangeBit?: (newBit: number, index: number) => void;
   selected?: number | number[];
   errors?: number | number[];
+  isAllError?: boolean;
 }
 
-export const DataBits: FC<IDataBitsProps> = ({ data, disabled, onChangeBit, selected, errors }) => {
+export const DataBits: FC<IDataBitsProps> = ({
+  data,
+  disabled,
+  onChangeBit,
+  selected,
+  errors,
+  isAllError,
+}) => {
   const getStatus = (key: number) => {
     if (typeof selected === 'number' && selected === key) {
       return 'selected';
@@ -18,6 +26,7 @@ export const DataBits: FC<IDataBitsProps> = ({ data, disabled, onChangeBit, sele
     if (typeof selected === 'object' && selected?.includes(key)) {
       return 'selected';
     }
+    if (isAllError) return 'error';
     if (typeof errors === 'number' && errors === key) {
       return 'error';
     }
