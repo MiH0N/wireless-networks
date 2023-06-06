@@ -13,7 +13,7 @@ interface IGeneratorKeyProps {
 export const GeneratorKey: FC<IGeneratorKeyProps> = ({ generatorData, handleKeyGenerator }) => {
   return (
     <MathJax.Provider>
-      <div className='flex justify-center space-x-24 items-end mt-24 mb-8  w-full'>
+      <div className='flex justify-center space-x-24 items-end mt-8 mb-8  w-full'>
         <div className='h-full space-y-6 text-center w-1/3'>
           <div className='text-lg'>generator polynomial</div>
           <div className='text-xl min-h-[50px]'>
