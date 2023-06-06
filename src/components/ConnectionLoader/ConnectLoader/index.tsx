@@ -4,9 +4,19 @@ import { FC } from 'react';
 import { IConnectionLoaderProps } from '..';
 interface IConnectLoaderProps extends Omit<IConnectionLoaderProps, 'type'> {}
 
-export const ConnectLoader: FC<IConnectLoaderProps> = ({ count = 4, className, isStatic }) => {
+export const ConnectLoader: FC<IConnectLoaderProps> = ({
+  count = 4,
+  dir = 'horizontal',
+  className,
+  isStatic,
+}) => {
   return (
-    <div className={classNames('flex  space-x-3 m-auto my-0 ', className)}>
+    <div
+      className={classNames(
+        'm-auto my-0 ',
+        dir === 'horizontal' ? 'flex space-x-3' : 'flex-col space-y-3',
+        className
+      )}>
       {[...Array(count)].map((item, index) => (
         <div
           key={index}
