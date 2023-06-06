@@ -6,6 +6,7 @@ export interface IConnectionLoaderProps {
   className?: string;
   isStatic?: boolean;
   type: 'connect' | 'disconnect';
+  dir ?: 'horizontal' | 'vertival'
 }
 
 export const ConnectionLoader: FC<IConnectionLoaderProps> = ({ type, ...props }) => {

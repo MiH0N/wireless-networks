@@ -8,10 +8,18 @@ interface IButtonProps
   > {
   variant: 'primary' | 'error' | 'warning' | 'dark';
   iconComponent?: JSX.Element;
+  className?: string;
+  sizeButton?: 'sm' | 'md';
 }
 
-const buttonStyle = (variant: IButtonProps['variant']) => {
-  const baseClassName = 'p-3 rounded-md transition-all duration-300';
+const sizeButtonStyle = {
+  sm: 'p-2 text-sm',
+  md: 'p-3 text-14',
+};
+
+const buttonStyle = (variant: IButtonProps['variant'], sizeButton: IButtonProps['sizeButton']) => {
+  const baseClassName =
+    'rounded-md transition-all duration-300 ' + sizeButtonStyle[sizeButton ?? 'md'];
   let classname = baseClassName;
   const primaryClassNames = 'text-white bg-blue-400';
   const warningClassNames = 'bg-yellow-400 text-white rounded hover:shadow-lg';
@@ -39,15 +47,17 @@ const buttonStyle = (variant: IButtonProps['variant']) => {
 export const Button: FC<IButtonProps> = ({
   variant = 'primary',
   children,
+  sizeButton,
+  className = '',
   iconComponent,
   ...props
 }) => {
   return (
     <button
       className={classNames(
-        buttonStyle(variant),
+        buttonStyle(variant, sizeButton),
         !!iconComponent && 'flex items-center',
-        props.className
+        className
       )}
       {...props}>
       {children}

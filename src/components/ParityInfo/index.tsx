@@ -15,7 +15,6 @@ export const ParityInfo: FC<IParityInfoProps> = ({
   paritySenderData,
   reciverData,
   parityReciverData,
-  className,
 }) => {
   const hasError = senderData.data === reciverData.data;
   const parityCheck = parityReciverData.data === paritySenderData.data;
