@@ -17,7 +17,7 @@ export const ConnectLoader: FC<IConnectLoaderProps> = ({
         dir === 'horizontal' ? 'flex space-x-3' : 'flex-col space-y-3',
         className
       )}>
-      {[...Array(count)].map((item, index) => (
+      {[...Array(count)].map((_item, index) => (
         <div
           key={index}
           className={classNames(!isStatic ? 'ball-animation ' : 'ball-static ', 'ball w-2.5 h-2.5')}

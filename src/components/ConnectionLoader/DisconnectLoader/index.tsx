@@ -8,9 +8,7 @@ interface IDisconnectLoaderProps extends Omit<IConnectionLoaderProps, 'type' | '
 
 export const DisconnectLoader: FC<IDisconnectLoaderProps> = ({
   className,
-  dir = 'horizontal',
-  ...props
-}) => {
+  dir = 'horizontal'}) => {
   // ball-error-active
   return (
     <div className='flex items-center m-auto'>
@@ -20,7 +18,7 @@ export const DisconnectLoader: FC<IDisconnectLoaderProps> = ({
           dir !== 'horizontal' && 'hidden',
           className
         )}>
-        {[...Array(7)].map((item, index) => (
+        {[...Array(7)].map((_item, index) => (
           <div
             key={index}
             className={classNames('ball ball-error-animation w-2.5 h-2.5')}
@@ -48,7 +46,7 @@ export const DisconnectLoader: FC<IDisconnectLoaderProps> = ({
           dir !== 'horizontal' && 'hidden',
           className
         )}>
-        {[...Array(7)].map((item, index) => (
+        {[...Array(7)].map((_item, index) => (
           <div key={index} className={classNames('ball ball-error w-2.5 h-2.5')} />
         ))}
       </div>

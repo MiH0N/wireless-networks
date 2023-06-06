@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Link , Outlet } from 'react-router-dom';
 interface ILayoutProps {}
 
-export const Layout: FC<ILayoutProps> = props => {
+export const Layout: FC<ILayoutProps> = () => {
   return (
     <>
       <nav>

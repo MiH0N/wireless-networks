@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { BitItem } from './BitItem';
 import { bitConvertor } from '../../utils/bitConvertor';
 interface IDataBitsProps {

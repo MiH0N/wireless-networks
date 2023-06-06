@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 interface INoMatchProps {}
 
-export const NoMatch: FC<INoMatchProps> = props => {
+export const NoMatch: FC<INoMatchProps> = () => {
   return (
     <div>
       <h2>Nothing to see here!</h2>

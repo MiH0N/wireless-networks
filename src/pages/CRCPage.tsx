@@ -22,7 +22,7 @@ const crcInitailParam = {
   dataword: '10010011',
 };
 
-export const CRCPage: FC<ICRCPageProps> = props => {
+export const CRCPage: FC<ICRCPageProps> = () => {
   const {
     generatorData,
     datawordData,
